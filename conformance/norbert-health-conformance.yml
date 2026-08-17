@@ -1,0 +1,58 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.norberthealth.com/
+note: >-
+  Norbert Health makes compliance-adjacent claims in marketing copy but publishes no
+  attestation, certificate, trust center, or standards profile to back any of them, and it
+  ships no machine-readable contract against which a technical standard could be asserted.
+  Every entry below is therefore recorded as conforms: false with the exact claim text —
+  a claim is not a conformance. No `Compliance` pointer is emitted in apis.yml.
+standards:
+- id: hipaa
+  name: HIPAA (US health information privacy/security)
+  conforms: false
+  claim: '"Norbert is certified ... Secure integrations and HIPAA-ready systems"'
+  evidence: >-
+    Marketing claim on https://www.norberthealth.com/ (HTTP 200). "HIPAA-ready" is a
+    self-description, not an attestation. The Privacy Policy (effective 2026-08-14) does
+    not mention HIPAA, does not identify Norbert Health, Inc. as a covered entity or
+    business associate, and offers no BAA. No third-party assessment is published.
+- id: fda-clearance
+  name: FDA clearance (US medical device)
+  conforms: false
+  claim: >-
+    '"CAUTION—Investigational device. Limited by Federal (or United States) law to
+    investigational use." / "Investigational and research use only pending FDA clearance"'
+  evidence: >-
+    Stated repeatedly on https://www.norberthealth.com/ (HTTP 200). The company states
+    plainly that the device is NOT cleared. Recorded here because it materially bounds any
+    integration: the sensing surface is research-use-only today.
+- id: soc2
+  name: SOC 2
+  conforms: false
+  evidence: No SOC 2 claim, report, or trust center found on any Norbert Health host.
+- id: iso27001
+  name: ISO/IEC 27001
+  conforms: false
+  evidence: No ISO 27001 claim or certificate published.
+- id: fhir
+  name: HL7 FHIR
+  conforms: false
+  evidence: >-
+    The site advertises "EMR notes and encounter logging" and "Connects to your care
+    management and medical records system", but names no interoperability standard (FHIR,
+    HL7 v2, SMART on FHIR, USCDI) and publishes no integration documentation.
+- id: oauth2
+  name: OAuth 2.0
+  conforms: false
+  evidence: >-
+    No securitySchemes to derive from (no OpenAPI published) and
+    /.well-known/oauth-authorization-server returns 404 on the corporate host and 403 on
+    the API host.
+- id: rfc9457
+  name: RFC 9457 Problem Details
+  conforms: false
+  evidence: >-
+    Cannot be asserted — no public contract. The only observed error body,
+    {"message":"Forbidden"} from api.norberthealth.com, is the AWS API Gateway default
+    envelope, not application/problem+json.

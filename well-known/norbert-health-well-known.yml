@@ -1,0 +1,101 @@
+generated: '2026-08-17'
+method: probed
+source: live HTTPS probes of every Norbert Health host reachable from apis.yml
+note: >-
+  Every /.well-known/ path probed on the corporate host returned 404, and every path
+  probed on the API host returned 403 from AWS API Gateway. No WellKnown or SecurityTxt
+  pointer is emitted in apis.yml, because nothing here is a served document — this file
+  records a measured ABSENCE, not a presence.
+hosts:
+- host: https://www.norberthealth.com
+  role: corporate website (Norbert Health, Inc.)
+  documents:
+  - path: /.well-known/security.txt
+    status: 404
+  - path: /.well-known/openid-configuration
+    status: 404
+  - path: /.well-known/oauth-authorization-server
+    status: 404
+  - path: /.well-known/api-catalog
+    status: 404
+  - path: /.well-known/ai-plugin.json
+    status: 404
+  - path: /.well-known/agent-card.json
+    status: 404
+  - path: /.well-known/agent.json
+    status: 404
+  - path: /llms.txt
+    status: 404
+  - path: /openapi.json
+    status: 404
+  - path: /swagger.json
+    status: 404
+  - path: /api-docs
+    status: 404
+  - path: /robots.txt
+    status: 404
+  - path: /sitemap.xml
+    status: 404
+- host: https://api.norberthealth.com
+  role: >-
+    Private application backend. DNS resolves to dbpkpa3363ur7.cloudfront.net; responses
+    carry x-amz-apigw-id / x-amzn-errortype ForbiddenException, i.e. an AWS API Gateway
+    behind CloudFront. Every path — including the root — answers HTTP 403
+    {"message":"Forbidden"} to an anonymous request. This is the backend of the NORBERT
+    Health Android app (com.norberthealth.norberthealth), not a published developer API:
+    Norbert Health advertises no developer portal, reference, or API product anywhere on
+    its site.
+  documents:
+  - path: /
+    status: 403
+  - path: /openapi.json
+    status: 403
+  - path: /swagger.json
+    status: 403
+  - path: /v1/openapi.json
+    status: 403
+  - path: /docs
+    status: 403
+  - path: /api-docs
+    status: 403
+  - path: /.well-known/security.txt
+    status: 403
+  - path: /.well-known/agent-card.json
+    status: 403
+  - path: /.well-known/agent.json
+    status: 403
+  - path: /llms.txt
+    status: 403
+- host: https://docs.norberthealth.com
+  role: >-
+    Hostname resolves (Cloudflare) but the origin is unreachable — every request returns
+    HTTP 525 (SSL handshake failed). No documentation is served.
+  documents:
+  - path: /openapi.json
+    status: 525
+  - path: /llms.txt
+    status: 525
+  - path: /.well-known/agent-card.json
+    status: 525
+- host: https://developer.norberthealth.com
+  role: Hostname does not resolve (NXDOMAIN); no developer portal exists.
+  documents:
+  - path: /
+    status: 0
+- host: https://developers.norberthealth.com
+  role: Hostname does not resolve (NXDOMAIN).
+  documents:
+  - path: /
+    status: 0
+- host: https://app.norberthealth.com
+  role: Hostname does not resolve (NXDOMAIN).
+  documents:
+  - path: /
+    status: 0
+summary:
+  paths_probed: 33
+  documents_found: 0
+  security_txt: false
+  agent_card: false
+  openid_configuration: false
+  api_catalog: false

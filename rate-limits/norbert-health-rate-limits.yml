@@ -1,0 +1,22 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.norberthealth.com/
+limit_count: 0
+note: >-
+  No rate limits are documented, because no API is documented. Norbert Health publishes no
+  developer portal, API reference, or terms of service. The only API host that exists,
+  https://api.norberthealth.com, is an AWS API Gateway serving the NORBERT Health mobile
+  app and returns HTTP 403 {"message":"Forbidden"} on every path to an anonymous caller,
+  so no runtime rate-limit headers could be observed either. limit_count: 0 records an
+  honest absence.
+limits: []
+headers: []
+evidence:
+- url: https://www.norberthealth.com/
+  status: 200
+  finding: no developer or API section anywhere on the site
+- url: https://api.norberthealth.com/
+  status: 403
+  finding: >-
+    {"message":"Forbidden"} with x-amzn-errortype ForbiddenException; no X-RateLimit-*,
+    RateLimit-* or Retry-After headers present on the response

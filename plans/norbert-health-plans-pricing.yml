@@ -1,0 +1,23 @@
+generated: '2026-08-17'
+method: searched
+source: https://www.norberthealth.com/
+plan_count: 0
+currency: null
+note: >-
+  Norbert Health publishes no pricing page and no plans of any kind. The company site has
+  three pages (/, /about, /privacy-policy — /pricing, /plans and /contact all return 404)
+  and the only commercial call to action anywhere on it is a "Book a demo" mailto link to
+  info@norberthealth.com. The product ("Norbert", an autonomous care manager for nursing
+  homes and rehab facilities) is sold through a demo-and-deployment motion, and the device
+  itself is labeled "Investigational device. Limited by Federal (or United States) law to
+  investigational use" pending FDA clearance — so there is no self-serve tier to price.
+  plan_count: 0 is a measured absence, not a gap in this pass.
+plans: []
+evidence:
+- url: https://www.norberthealth.com/
+  status: 200
+  finding: no pricing link in nav or footer; CTA is mailto:info@norberthealth.com
+- url: https://www.norberthealth.com/pricing
+  status: 404
+- url: https://www.norberthealth.com/contact
+  status: 404
