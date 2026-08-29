@@ -13,6 +13,17 @@ description: >-
   investigational use pending FDA clearance. Norbert Health publishes no public API,
   developer portal, or machine-readable contract; integration is arranged through a sales
   conversation.
+deliveryModel:
+  model: saas
+  open_source: false
+  commercial: true
+  callable_host: false
+  label: Hosted service · you call their endpoint
+  confidence: medium
+  source:
+  - pricing
+  generated: '2026-08-28'
+  method: derived
 image: https://www.norberthealth.com/assets/logo.png
 url: https://raw.githubusercontent.com/api-evangelist/norbert-health/refs/heads/main/apis.yml
 x-type: company
